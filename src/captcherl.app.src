@@ -1,14 +1,14 @@
-{application, captcherl, [
-    {description, "An OTP library"},
-    {vsn, "0.1.0"},
-    {registered, []},
-    {applications, [
-        kernel,
-        stdlib
-    ]},
-    {env, []},
-    {modules, []},
+{application, captcherl,
+ [{description, "An OTP library"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications, [kernel,
+                  stdlib,
+                  inets,
+                  ssl,
+                  jsone]},
+  {env, []},
+  {modules, []},
 
-    {licenses, ["MIT"]},
-    {links, []}
-]}.
+  {licenses, ["MIT"]},
+  {links, []}]}.
