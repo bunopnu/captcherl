@@ -1,24 +1,29 @@
-all: build format test cover doc clean
+BUILDTOOL = rebar3
+FORMATTER = efmt
+
+.PHONY: build test doc
 
 build:
-	rebar3 compile
+	  $(BUILDTOOL) compile
 
 format:
-	efmt -w
+	  $(FORMATTER) -w
+
+check:
+	  $(FORMATTER) -c
+	  $(BUILDTOOL) do xref, dialyzer
 
 test:
-	efmt -c
-	rebar3 do xref, dialyzer
-	rebar3 eunit
+	  $(BUILDTOOL) eunit
 
 cover:
-	rebar3 cover
+	  $(BUILDTOOL) cover
 
 doc:
-	rebar3 edoc
+	  $(BUILDTOOL) edoc
 
 clean:
-	rebar3 clean
+	  $(BUILDTOOL) clean
 
 start:
-	rebar3 shell
+	  $(BUILDTOOL) shell
