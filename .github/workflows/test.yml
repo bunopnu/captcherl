@@ -33,8 +33,9 @@ jobs:
         run: |
           set -e
           mkdir $HOME/efmt-bin
-          curl -L https://github.com/sile/efmt/releases/download/0.14.1/efmt-0.14.1.x86_64-unknown-linux-musl -o efmt-bin/efmt
+          curl -L https://github.com/sile/efmt/releases/download/0.14.1/efmt-0.14.1.x86_64-unknown-linux-musl -o $HOME/efmt-bin/efmt
           echo "$HOME/efmt-bin" >> $GITHUB_PATH
+          chmod +x $HOME/efmt-bin/efmt
 
       - name: Restore Cache
         uses: actions/cache@v3
