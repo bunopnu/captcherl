@@ -1,8 +1,8 @@
 -module(captcherl_tests).
 
--include_lib("stdlib/include/assert.hrl").
-
 -export([turnstile_test/0, recaptcha_test/0, hcaptcha_test/0]).
+
+-include_lib("stdlib/include/assert.hrl").
 
 
 turnstile_test() ->
