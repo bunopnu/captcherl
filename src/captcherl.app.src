@@ -1,5 +1,5 @@
 {application, captcherl,
- [{description, "An OTP library"},
+ [{description, "Erlang library for interacting with various CAPTCHA services"},
   {vsn, "0.1.0"},
   {registered, []},
   {applications, [kernel,
@@ -11,4 +11,4 @@
   {modules, []},
 
   {licenses, ["MIT"]},
-  {links, []}]}.
+  {links, [{"GitHub", "https://github.com/bunopnu/captcherl"}]}]}.
