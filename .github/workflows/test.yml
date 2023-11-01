@@ -1,0 +1,52 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Testing with Erlang/OTP ${{ matrix.otp }}
+
+    env:
+      REBAR_PROFILE: test
+
+    strategy:
+      fail-fast: false
+      matrix:
+        otp: ["26.1.2", "25.3.2.7"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Erlang
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          rebar3-version: "3.22.1"
+          version-type: strict
+
+      - name: Install efmt
+        run: |
+          set -e
+          mkdir $HOME/efmt-bin
+          curl -L https://github.com/sile/efmt/releases/download/0.14.1/efmt-0.14.1.x86_64-unknown-linux-musl -o efmt-bin/efmt
+          echo "$HOME/efmt-bin" >> $GITHUB_PATH
+
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          path: _build
+          key: erlang-${{ matrix.otp }}-${{ hashFiles('**/rebar.lock') }}-build
+
+      - name: Compile Project
+        run: make build
+
+      - name: Check Project
+        run: make check
+
+      - name: Run Tests
+        run: make test
