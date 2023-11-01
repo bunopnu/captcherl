@@ -2,6 +2,9 @@
 
 An Erlang library that simplifies the process of verifying CAPTCHA responses for your web applications by providing easy-to-use functions for interacting with **Cloudflare Turnstile**, **reCAPTCHA** and **hCaptcha**.
 
+[![Test Status](https://github.com/bunopnu/captcherl/actions/workflows/test.yml/badge.svg)](https://github.com/bunopnu/captcherl/actions/workflows/test.yml)
+[![Hex Version](https://img.shields.io/hexpm/v/captcherl.svg)](https://hex.pm/packages/captcherl)
+
 ## Installation
 
 Package can be installed by adding `captcherl` to your list of dependencies:
