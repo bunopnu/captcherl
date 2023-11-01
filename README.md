@@ -1,6 +1,6 @@
 # CaptchErl
 
-An Erlang library that simplifies the process of verifying CAPTCHA responses for your web applications by providing easy-to-use functions for interacting with **Cloudflare Turnstile**, **reCAPTCHA**, and **hCaptcha**.
+An Erlang library that simplifies the process of verifying CAPTCHA responses for your web applications by providing easy-to-use functions for interacting with **Cloudflare Turnstile**, **reCAPTCHA** and **hCaptcha**.
 
 ## Installation
 
