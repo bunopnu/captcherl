@@ -34,13 +34,15 @@ request(Url, Data) ->
 %%% ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
 
 
-build_request_data({Secret, Response, IpAddress}) ->
+build_request_data({Secret, Response})
+  when is_binary(Secret), is_binary(Response) ->
+    uri_string:compose_query([{"secret", Secret},
+                              {"response", Response}]);
+build_request_data({Secret, Response, IpAddress})
+  when is_binary(Secret), is_binary(Response), is_binary(IpAddress) ->
     uri_string:compose_query([{"secret", Secret},
                               {"response", Response},
-                              {"remoteip", IpAddress}]);
-build_request_data({Secret, Response}) ->
-    uri_string:compose_query([{"secret", Secret},
-                              {"response", Response}]).
+                              {"remoteip", IpAddress}]).
 
 
 build_request(Url, Body) ->

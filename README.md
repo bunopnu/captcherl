@@ -45,7 +45,7 @@ $ make test
 
 # Start an Erlang shell
 $ make start
-1> captcherl:verify(turnstile, {"1x0000000000000000000000000000000AA", "always true"}).
+1> captcherl:verify(turnstile, {<<"1x0000000000000000000000000000000AA">>, <<"always true">>}).
 true
 ```
 

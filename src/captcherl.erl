@@ -41,8 +41,8 @@
 %% Representing the available CAPTCHA services.
 -type request_response() :: {ok, map()} | {error, term()}.
 %% Representing the response from a CAPTCHA service request.
--type api_request_data() :: {Secret :: unicode:chardata(), Response :: unicode:chardata()} |
-                            {Secret :: unicode:chardata(), Response :: unicode:chardata(), IpAddress :: unicode:chardata()}.
+-type api_request_data() :: {Secret :: binary(), Response :: binary()} |
+                            {Secret :: binary(), Response :: binary(), IpAddress :: binary()}.
 %% Representing the data required for making a request.
 
 %%% ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
