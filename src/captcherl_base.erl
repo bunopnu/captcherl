@@ -7,7 +7,7 @@
 %%%
 %%% ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
 
--export([request/2]).
+-export([request/3]).
 
 %%% ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
 %%%
@@ -16,14 +16,15 @@
 %%% ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
 
 
--spec request(Url, Data) -> Result
+-spec request(Url, Data, Opts) -> Result
               when Url :: uri_string:uri_string(),
                    Data :: catpcherl:api_request_data(),
+                   Opts :: list(),
                    Result :: captcherl:request_response().
-request(Url, Data) ->
+request(Url, Data, Opts) ->
     RequestData = build_request_data(Data),
     Request = build_request(Url, RequestData),
-    Response = apply_request(Request),
+    Response = apply_request(Request, Opts),
     process_response(Response).
 
 
@@ -51,10 +52,7 @@ build_request(Url, Body) ->
     {Url, Headers, ContentType, Body}.
 
 
-apply_request(Request) ->
-    Opts = [{ssl, [{verify, verify_peer},
-                   {cacerts, public_key:cacerts_get()},
-                   {customize_hostname_check, [{match_fun, public_key:pkix_verify_hostname_match_fun(https)}]}]}],
+apply_request(Request, Opts) ->
     httpc:request(post, Request, Opts, []).
 
 
