@@ -19,7 +19,7 @@
 -spec request(Url, Data, Opts) -> Result
               when Url :: uri_string:uri_string(),
                    Data :: catpcherl:api_request_data(),
-                   Opts :: list(),
+                   Opts :: term(),
                    Result :: captcherl:request_response().
 request(Url, Data, Opts) ->
     RequestData = build_request_data(Data),

@@ -78,7 +78,7 @@ start() ->
 -spec request(Service, Data, Opts) -> Result
               when Service :: captcha_services(),
                    Data :: api_request_data(),
-                   Opts :: list(),
+                   Opts :: term(),
                    Result :: request_response().
 request(turnstile, Data, Opts) ->
     captcherl_base:request(?URL_TURNSTILE, Data, Opts);

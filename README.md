@@ -10,7 +10,7 @@ An Erlang library that simplifies the process of verifying CAPTCHA responses for
 Package can be installed by adding `captcherl` to your list of dependencies:
 
 ```erlang
-{deps, [{captcherl, "0.1.0"}]}.
+{deps, [{captcherl, "0.1.1"}]}.
 ```
 
 ## Compatibility
