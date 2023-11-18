@@ -1,5 +1,4 @@
 BUILDTOOL = rebar3
-FORMATTER = efmt
 
 .PHONY: build test doc
 
@@ -7,10 +6,10 @@ build:
 	  $(BUILDTOOL) compile
 
 format:
-	  $(FORMATTER) -w
+	  $(BUILDTOOL) efmt -w
 
 check:
-	  $(FORMATTER) -c
+	  $(BUILDTOOL) efmt -c
 	  $(BUILDTOOL) do xref, dialyzer
 
 test:
